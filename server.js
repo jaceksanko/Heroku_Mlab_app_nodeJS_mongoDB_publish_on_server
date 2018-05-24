@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const express = require('express');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://jacek:jacek1234@ds249355.mlab.com:49355/database-1');
+
+let app = express();
+
+app.get('/', function(req, res) {
+    res.send('Hello world');
+});
+
 
 //new user Schema
 const userSchema = new Schema({
