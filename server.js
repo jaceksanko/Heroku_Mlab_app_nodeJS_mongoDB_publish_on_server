@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const PORT = process.env.PORT || 5000,
 const express = require('express');
 
 mongoose.Promise = global.Promise;
@@ -10,6 +11,7 @@ let app = express();
 app.get('/', function(req, res) {
     res.send('Hello world');
 });
+app.listen(PORT, () => console.log('Example app listening on port 5000!'));
 
 
 //new user Schema
@@ -120,7 +122,7 @@ const updateUsername = function() {
         console.log('Nazwa uzytkownika po aktualizacji to ' + user.username);
     })
 }
-/* 
+
 const findMarkAndDelete = function() {
     // find specific user and delete
     return User.findOne({ username: 'Mark_the_boy' })
@@ -149,14 +151,14 @@ const findBennyAndRemove = function() {
                 console.log('User successfully deleted');
             });
         });
-}; */
+};
 
 Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findAllUsers)
     .then(findSpecificRecord)
     .then(updadeUserPassword)
     .then(updateUsername)
-   /*  .then(findMarkAndDelete)
+    .then(findMarkAndDelete)
     .then(findKennyAndDelete)
-    .then(findBennyAndRemove) */
+    .then(findBennyAndRemove)
     .catch(console.log.bind(console));
