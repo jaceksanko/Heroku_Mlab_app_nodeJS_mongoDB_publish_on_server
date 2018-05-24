@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const PORT = process.env.PORT || 5000;
-const express = require('express');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://jacek:jacek1234@ds249355.mlab.com:49355/database-1');
 
-let app = express();
+
+// minimal Express application that will deploy on Amazon's Elastic Beanstalk
+const   express = require('express'),        
+        app = express();
 
 app.get('/', function(req, res) {
     res.send('Hello world');
 });
-app.listen(PORT, () => console.log('Example app listening on port 5000!'));
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);
+// end minimal Express application ...
 
 //new user Schema
 const userSchema = new Schema({
