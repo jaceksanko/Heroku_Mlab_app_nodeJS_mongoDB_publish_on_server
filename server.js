@@ -120,7 +120,7 @@ const updateUsername = function() {
         console.log('Nazwa uzytkownika po aktualizacji to ' + user.username);
     })
 }
-
+/* 
 const findMarkAndDelete = function() {
     // find specific user and delete
     return User.findOne({ username: 'Mark_the_boy' })
@@ -149,14 +149,14 @@ const findBennyAndRemove = function() {
                 console.log('User successfully deleted');
             });
         });
-}
+}; */
 
 Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findAllUsers)
     .then(findSpecificRecord)
     .then(updadeUserPassword)
     .then(updateUsername)
-    .then(findMarkAndDelete)
+   /*  .then(findMarkAndDelete)
     .then(findKennyAndDelete)
-    .then(findBennyAndRemove)
-    .catch(console.log.bind(console))
+    .then(findBennyAndRemove) */
+    .catch(console.log.bind(console));
